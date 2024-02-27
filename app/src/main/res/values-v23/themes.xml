@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.V23.DexReader" parent="Base.Theme.DexReader">
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="android:navigationBarColor">@android:color/transparent</item>
+	</style>
+
+	<style name="Theme.DexReader" parent="Base.V23.DexReader" />
+
+</resources>

@@ -1,7 +1,17 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.DexReader" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="ThemeOverlay.DexReader" parent="ThemeOverlay.Material3.Dark">
+		<item name="android:navigationBarColor">@android:color/transparent</item>
+	</style>
+
+	<style name="ThemeOverlay.DexReader.Amoled" parent="">
+		<item name="colorSurface">@color/surface_amoled</item>
+		<item name="android:colorBackground">@color/background_amoled</item>
+		<item name="m3ColorBackground">@color/background_amoled</item>
+		<item name="m3ColorExploreButton">@color/surface_amoled</item>
+		<item name="m3ColorCardBackground">@color/surface_amoled</item>
+		<item name="m3ColorBottomMenuBackground">@color/surface_amoled</item>
+	</style>
+
 </resources>

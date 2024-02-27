@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Theme.DexReader.Miku" />
+
+	<style name="Theme.DexReader.Asuka" />
+
+	<style name="Theme.DexReader.Mion" />
+
+	<style name="Theme.DexReader.Rikka" />
+
+	<style name="Theme.DexReader.Sakura" />
+
+	<style name="Theme.DexReader.Mamimi" />
+</resources>
