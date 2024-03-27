@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<com.example.dexreader.settings.utils.SplitSwitchPreference
+		android:defaultValue="false"
+		android:key="stats_on"
+		android:title="@string/reading_stats"
+		app:allowDividerAbove="true" />
+
+</PreferenceScreen>

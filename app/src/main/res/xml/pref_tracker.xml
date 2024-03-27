@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<SwitchPreferenceCompat
+		android:defaultValue="true"
+		android:key="tracker_enabled"
+		android:layout="@layout/preference_toggle_header"
+		android:title="@string/check_new_chapters_title" />
+
+	<MultiSelectListPreference
+		android:defaultValue="@array/values_track_sources_default"
+		android:dependency="tracker_enabled"
+		android:entries="@array/track_sources"
+		android:entryValues="@array/values_track_sources"
+		android:key="track_sources"
+		android:title="@string/track_sources" />
+
+	<Preference
+		android:key="track_categories"
+		android:title="@string/favourites_categories" />
+
+	<Preference
+		android:dependency="tracker_enabled"
+		android:fragment="com.example.dexreader.settings.NotificationSettingsLegacyFragment"
+		android:key="notifications_settings"
+		android:title="@string/notifications_settings" />
+
+</PreferenceScreen>

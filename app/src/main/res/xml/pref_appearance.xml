@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<com.example.dexreader.settings.utils.ThemeChooserPreference
+		android:key="color_theme"
+		android:title="@string/color_theme"
+		app:isPreferenceVisible="@bool/is_color_themes_available" />
+
+	<ListPreference
+		android:defaultValue="-1"
+		android:entries="@array/themes"
+		android:entryValues="@array/values_theme"
+		android:key="theme"
+		android:title="@string/theme"
+		app:useSimpleSummaryProvider="true" />
+
+	<PreferenceCategory android:title="@string/manga_list">
+
+		<ListPreference
+			android:entries="@array/list_modes"
+			android:key="list_mode_2"
+			android:title="@string/list_mode"
+			app:useSimpleSummaryProvider="true" />
+
+		<com.example.dexreader.settings.utils.SliderPreference
+			android:key="grid_size"
+			android:stepSize="5"
+			android:title="@string/grid_size"
+			android:valueFrom="50"
+			android:valueTo="150"
+			app:defaultValue="100" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="true"
+			android:key="reading_indicators"
+			android:summary="@string/show_reading_indicators_summary"
+			android:title="@string/show_reading_indicators" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/details">
+
+		<SwitchPreferenceCompat
+			android:defaultValue="true"
+			android:key="pages_tab"
+			android:summary="@string/show_pages_thumbs_summary"
+			android:title="@string/show_pages_thumbs" />
+
+		<ListPreference
+			android:defaultValue="0"
+			android:dependency="pages_tab"
+			android:entries="@array/details_tabs"
+			android:entryValues="@array/details_tabs_values"
+			android:key="details_tab"
+			android:title="@string/default_tab"
+			app:useSimpleSummaryProvider="true" />
+
+	</PreferenceCategory>
+
+	<PreferenceScreen
+		android:fragment="com.example.dexreader.settings.nav.NavConfigFragment"
+		android:key="nav_main"
+		android:title="@string/main_screen_sections"
+		app:allowDividerAbove="true" />
+
+	<SwitchPreferenceCompat
+		android:defaultValue="true"
+		android:key="nav_labels"
+		android:title="@string/show_labels_in_navbar" />
+
+	<com.example.dexreader.settings.utils.ActivityListPreference
+		android:key="app_locale"
+		android:title="@string/language" />
+
+</PreferenceScreen>
