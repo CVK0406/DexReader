@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.dexreader.core.ui.widgets.TipView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginHorizontal="8dp"
+	android:layout_marginVertical="8dp"
+	app:shapeAppearance="?shapeAppearanceCornerExtraLarge"
+	tools:icon="@drawable/ic_notification"
+	tools:primaryButtonText="@string/settings"
+	tools:secondaryButtonText="@string/close"
+	tools:text="Turn them on so you don't miss anything. Open your system settings and allow them to be sent."
+	tools:title="
+Notifications are disabled" />
