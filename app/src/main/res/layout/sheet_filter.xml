@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<com.example.dexreader.core.ui.sheet.AdaptiveSheetHeaderBar
+		android:id="@+id/headerBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title="@string/filter" />
+
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/scrollView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scrollIndicators="top">
+
+		<LinearLayout
+			android:id="@+id/layout_body"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingBottom="@dimen/margin_normal">
+
+			<TextView
+				android:id="@+id/textView_order_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/sort_order"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/card_order"
+				style="?m3SpinnerStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="16dp"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:visibility="gone"
+				tools:visibility="visible">
+
+				<Spinner
+					android:id="@+id/spinner_order"
+					android:layout_width="match_parent"
+					android:layout_height="56dp"
+					android:minHeight="?listPreferredItemHeightSmall"
+					android:paddingHorizontal="8dp" />
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<TextView
+				android:id="@+id/textView_locale_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/language"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/card_locale"
+				style="?m3SpinnerStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="16dp"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:visibility="gone"
+				tools:visibility="visible">
+
+				<Spinner
+					android:id="@+id/spinner_locale"
+					android:layout_width="match_parent"
+					android:layout_height="56dp"
+					android:minHeight="?listPreferredItemHeightSmall"
+					android:paddingHorizontal="8dp"
+					android:popupBackground="@drawable/m3_spinner_popup_background" />
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<TextView
+				android:id="@+id/textView_genres_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/genres"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.example.dexreader.core.ui.widgets.ChipsView
+				android:id="@+id/chips_genres"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:paddingHorizontal="@dimen/margin_normal"
+				android:visibility="gone"
+				app:chipStyle="@style/Widget.DexReader.Chip.Filter"
+				tools:visibility="visible" />
+
+			<TextView
+				android:id="@+id/textView_genres_hint"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:drawablePadding="16dp"
+				android:gravity="center_vertical"
+				android:paddingHorizontal="@dimen/margin_normal"
+				android:paddingVertical="8dp"
+				android:textAppearance="?textAppearanceBodySmall"
+				android:visibility="gone"
+				app:drawableStartCompat="@drawable/ic_error_small"
+				app:drawableTint="?attr/colorControlNormal"
+				tools:text="@string/error_multiple_genres_not_supported"
+				tools:visibility="visible" />
+
+			<TextView
+				android:id="@+id/textView_genresExclude_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/genres_exclude"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.example.dexreader.core.ui.widgets.ChipsView
+				android:id="@+id/chips_genresExclude"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:paddingHorizontal="@dimen/margin_normal"
+				android:visibility="gone"
+				app:chipStyle="@style/Widget.DexReader.Chip.Filter"
+				tools:visibility="visible" />
+
+			<TextView
+				android:id="@+id/textView_state_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/state"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.example.dexreader.core.ui.widgets.ChipsView
+				android:id="@+id/chips_state"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:paddingHorizontal="@dimen/margin_normal"
+				android:visibility="gone"
+				app:chipStyle="@style/Widget.DexReader.Chip.Filter"
+				tools:visibility="visible" />
+
+			<TextView
+				android:id="@+id/textView_contentRating_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_normal"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:singleLine="true"
+				android:text="@string/content_rating"
+				android:textAppearance="?textAppearanceTitleSmall"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<com.example.dexreader.core.ui.widgets.ChipsView
+				android:id="@+id/chips_contentRating"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_normal"
+				android:paddingHorizontal="@dimen/margin_normal"
+				android:visibility="gone"
+				app:chipStyle="@style/Widget.DexReader.Chip.Filter"
+				tools:visibility="visible" />
+
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+</LinearLayout>
