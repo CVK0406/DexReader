@@ -4,12 +4,6 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
-		android:id="@+id/action_share"
-		android:icon="?actionModeShareDrawable"
-		android:title="@string/share"
-		app:showAsAction="ifRoom|withText" />
-
-	<item
 		android:id="@+id/action_remove"
 		android:icon="@drawable/ic_delete"
 		android:title="@string/delete"
