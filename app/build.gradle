@@ -26,6 +26,16 @@ android {
             generateLocaleConfig true
         }
     }
+    buildTypes {
+        debug {
+            applicationIdSuffix = '.debug'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
     buildFeatures {
         viewBinding true
         buildConfig true
