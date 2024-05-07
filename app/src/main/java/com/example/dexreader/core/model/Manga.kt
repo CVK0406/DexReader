@@ -1,0 +1,141 @@
+package com.example.dexreader.core.model
+
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.collection.MutableObjectIntMap
+import androidx.core.os.LocaleListCompat
+import com.example.dexreader.R
+import com.example.dexreader.core.util.ext.iterator
+import com.example.dexreader.details.ui.model.ChapterListItem
+import org.example.dexreader.parsers.model.ContentRating
+import org.example.dexreader.parsers.model.Manga
+import org.example.dexreader.parsers.model.MangaChapter
+import org.example.dexreader.parsers.model.MangaSource
+import org.example.dexreader.parsers.model.MangaState
+import org.example.dexreader.parsers.util.mapToSet
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import com.google.android.material.R as materialR
+
+@JvmName("mangaIds")
+fun Collection<Manga>.ids() = mapToSet { it.id }
+
+fun Collection<Manga>.distinctById() = distinctBy { it.id }
+
+@JvmName("chaptersIds")
+fun Collection<MangaChapter>.ids() = mapToSet { it.id }
+
+fun Collection<MangaChapter>.findById(id: Long) = find { x -> x.id == id }
+
+fun Collection<ChapterListItem>.countChaptersByBranch(): Int {
+	if (size <= 1) {
+		return size
+	}
+	val acc = MutableObjectIntMap<String?>()
+	for (item in this) {
+		val branch = item.chapter.branch
+		acc[branch] = acc.getOrDefault(branch, 0) + 1
+	}
+	var max = 0
+	acc.forEachValue { x -> if (x > max) max = x }
+	return max
+}
+
+@get:StringRes
+val MangaState.titleResId: Int
+	get() = when (this) {
+		MangaState.ONGOING -> R.string.state_ongoing
+		MangaState.FINISHED -> R.string.state_finished
+		MangaState.ABANDONED -> R.string.state_abandoned
+		MangaState.PAUSED -> R.string.state_paused
+		MangaState.UPCOMING -> R.string.state_upcoming
+	}
+
+@get:DrawableRes
+val MangaState.iconResId: Int
+	get() = when (this) {
+		MangaState.ONGOING -> R.drawable.ic_play
+		MangaState.FINISHED -> R.drawable.ic_state_finished
+		MangaState.ABANDONED -> R.drawable.ic_state_abandoned
+		MangaState.PAUSED -> R.drawable.ic_action_pause
+		MangaState.UPCOMING -> materialR.drawable.ic_clock_black_24dp
+	}
+
+@get:StringRes
+val ContentRating.titleResId: Int
+	get() = when (this) {
+		ContentRating.SAFE -> R.string.rating_safe
+		ContentRating.SUGGESTIVE -> R.string.rating_suggestive
+		ContentRating.ADULT -> R.string.rating_adult
+	}
+
+fun Manga.findChapter(id: Long): MangaChapter? {
+	return chapters?.findById(id)
+}
+
+fun Manga.getPreferredBranch(history: MangaHistory?): String? {
+	val ch = chapters
+	if (ch.isNullOrEmpty()) {
+		return null
+	}
+	if (history != null) {
+		val currentChapter = ch.findById(history.chapterId)
+		if (currentChapter != null) {
+			return currentChapter.branch
+		}
+	}
+	val groups = ch.groupBy { it.branch }
+	if (groups.size == 1) {
+		return groups.keys.first()
+	}
+	for (locale in LocaleListCompat.getAdjustedDefault()) {
+		val displayLanguage = locale.getDisplayLanguage(locale)
+		val displayName = locale.getDisplayName(locale)
+		val candidates = HashMap<String?, List<MangaChapter>>(3)
+		for (branch in groups.keys) {
+			if (branch != null && (
+					branch.contains(displayLanguage, ignoreCase = true) ||
+						branch.contains(displayName, ignoreCase = true)
+					)
+			) {
+				candidates[branch] = groups[branch] ?: continue
+			}
+		}
+		if (candidates.isNotEmpty()) {
+			return candidates.maxBy { it.value.size }.key
+		}
+	}
+	return groups.maxByOrNull { it.value.size }?.key
+}
+
+val Manga.isLocal: Boolean
+	get() = source == MangaSource.LOCAL
+
+private val chaptersNumberFormat = DecimalFormat("#.#").also { f ->
+	f.decimalFormatSymbols = DecimalFormatSymbols.getInstance().also {
+		it.decimalSeparator = '.'
+	}
+}
+
+fun MangaChapter.formatNumber(): String? {
+	if (number <= 0f) {
+		return null
+	}
+	return chaptersNumberFormat.format(number.toDouble())
+}
+
+fun Manga.chaptersCount(): Int {
+	if (chapters.isNullOrEmpty()) {
+		return 0
+	}
+	val counters = MutableObjectIntMap<String?>()
+	var max = 0
+	chapters?.forEach { x ->
+		val c = counters.getOrDefault(x.branch, 0) + 1
+		counters[x.branch] = c
+		if (max < c) {
+			max = c
+		}
+	}
+	return max
+}
