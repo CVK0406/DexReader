@@ -1,26 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
 
-    <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.DexReader"
-        tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+	<uses-permission
+		android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+		android:maxSdkVersion="29" />
+	<uses-permission
+		android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+		tools:ignore="ScopedStorage" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+	<queries>
+		<intent>
+			<action android:name="android.intent.action.PROCESS_TEXT" />
+			<data android:mimeType="text/plain" />
+		</intent>
+	</queries>
+
+	<application
+		android:name="com.example.dexreader.DexReaderApp"
+		android:allowBackup="true"
+		android:backupAgent="com.example.dexreader.settings.backup.AppBackupAgent"
+		android:dataExtractionRules="@xml/backup_rules"
+		android:enableOnBackInvokedCallback="true"
+		android:fullBackupContent="@xml/backup_content"
+		android:fullBackupOnly="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:largeHeap="true"
+		android:networkSecurityConfig="@xml/network_security_config"
+		android:requestLegacyExternalStorage="true"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/Theme.DexReader"
+		tools:ignore="UnusedAttribute">
+
+		<activity
+			android:name="com.example.dexreader.main.ui.MainActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<meta-data
+				android:name="android.app.default_searchable"
+				android:value="com.example.dexreader.ui.search.SearchActivity" />
+		</activity>
+		<activity
+			android:name="com.example.dexreader.details.ui.DetailsActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="${applicationId}.action.VIEW_MANGA" />
+			</intent-filter>
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="dexreader.app" />
+				<data android:path="/manga" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="dexreader" />
+				<data android:host="manga" />
+				<data android:host="dexreader.app" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.reader.ui.ReaderActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="${applicationId}.action.READ_MANGA" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.search.ui.SearchActivity"
+			android:label="@string/search" />
+		<activity
+			android:name="com.example.dexreader.search.ui.MangaListActivity"
+			android:exported="true"
+			android:label="@string/manga_list">
+			<intent-filter>
+				<action android:name="${applicationId}.action.EXPLORE_MANGA" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.history.ui.HistoryActivity"
+			android:label="@string/history" />
+		<activity
+			android:name="com.example.dexreader.tracker.ui.updates.UpdatesActivity"
+			android:label="@string/updates" />
+		<activity
+			android:name="com.example.dexreader.favourites.ui.FavouritesActivity"
+			android:label="@string/favourites" />
+		<activity
+			android:name="com.example.dexreader.bookmarks.ui.BookmarksActivity"
+			android:label="@string/bookmarks" />
+		<activity
+			android:name="com.example.dexreader.suggestions.ui.SuggestionsActivity"
+			android:label="@string/suggestions" />
+		<activity
+			android:name="com.example.dexreader.details.ui.related.RelatedMangaActivity"
+			android:label="@string/related_manga" />
+		<activity
+			android:name="com.example.dexreader.settings.SettingsActivity"
+			android:exported="true"
+			android:label="@string/settings">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="dexreader" />
+				<data android:host="about" />
+				<data android:host="sync-settings" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.settings.reader.ReaderTapGridConfigActivity"
+			android:label="@string/reader_actions" />
+		<activity
+			android:name="com.example.dexreader.settings.storage.directories.MangaDirectoriesActivity"
+			android:label="@string/local_manga_directories" />
+		<activity
+			android:name="com.example.dexreader.favourites.ui.categories.FavouriteCategoriesActivity"
+			android:label="@string/manage_categories" />
+		<activity
+			android:name="com.example.dexreader.widget.shelf.ShelfWidgetConfigActivity"
+			android:exported="true"
+			android:label="@string/manga_shelf">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.widget.recent.RecentWidgetConfigActivity"
+			android:exported="true"
+			android:label="@string/recent_manga">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.example.dexreader.search.ui.multi.MultiSearchActivity"
+			android:label="@string/search" />
+		<activity
+			android:name="com.example.dexreader.download.ui.list.DownloadsActivity"
+			android:label="@string/downloads"
+			android:launchMode="singleTop" />
+		<activity android:name="com.example.dexreader.image.ui.ImageActivity" />
+		<activity android:name="com.example.dexreader.favourites.ui.categories.edit.FavouritesCategoryEditActivity" />
+		<activity
+			android:name="com.example.dexreader.reader.ui.colorfilter.ColorFilterConfigActivity"
+			android:label="@string/color_correction" />
+		<activity
+			android:name="com.example.dexreader.scrobbling.common.ui.config.ScrobblerConfigActivity"
+			android:exported="true"
+			android:label="@string/settings"
+			android:launchMode="singleTop">
+
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="dexreader" />
+			</intent-filter>
+
+		</activity>
+		<activity
+			android:name="com.example.dexreader.settings.sources.catalog.SourcesCatalogActivity"
+			android:label="@string/sources_catalog" />
+		<activity
+			android:name="com.example.dexreader.stats.ui.StatsActivity"
+			android:label="@string/reading_stats" />
+		<activity
+			android:name="com.example.dexreader.alternatives.ui.AlternativesActivity"
+			android:label="@string/alternatives" />
+
+		<service
+			android:name="androidx.work.impl.foreground.SystemForegroundService"
+			android:foregroundServiceType="dataSync"
+			tools:node="merge" />
+		<service
+			android:name="com.example.dexreader.local.ui.LocalChaptersRemoveService"
+			android:foregroundServiceType="dataSync" />
+		<service
+			android:name="com.example.dexreader.widget.shelf.ShelfWidgetService"
+			android:permission="android.permission.BIND_REMOTEVIEWS" />
+		<service
+			android:name="com.example.dexreader.widget.recent.RecentWidgetService"
+			android:permission="android.permission.BIND_REMOTEVIEWS" />
+		<service
+			android:name="com.example.dexreader.details.service.MangaPrefetchService"
+			android:exported="false" />
+
+		<provider
+			android:name="com.example.dexreader.search.ui.MangaSuggestionsProvider"
+			android:authorities="${applicationId}.MangaSuggestionsProvider"
+			android:exported="false" />
+		<provider
+			android:name="androidx.core.content.FileProvider"
+			android:authorities="${applicationId}.files"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/filepaths" />
+		</provider>
+		<provider
+			android:name="androidx.startup.InitializationProvider"
+			android:authorities="${applicationId}.androidx-startup"
+			android:exported="false"
+			tools:node="remove">
+			<meta-data
+				android:name="androidx.work.WorkManagerInitializer"
+				android:value="androidx.startup"
+				tools:node="remove" />
+		</provider>
+
+		<receiver
+			android:name="com.example.dexreader.widget.shelf.ShelfWidgetProvider"
+			android:exported="true"
+			android:label="@string/manga_shelf">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/widget_shelf" />
+		</receiver>
+		<receiver
+			android:name="com.example.dexreader.widget.recent.RecentWidgetProvider"
+			android:exported="true"
+			android:label="@string/recent_manga">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/widget_recent" />
+		</receiver>
+
+		<meta-data
+			android:name="android.webkit.WebView.EnableSafeBrowsing"
+			android:value="false" />
+		<meta-data
+			android:name="android.webkit.WebView.MetricsOptOut"
+			android:value="true" />
+		<meta-data
+			android:name="com.samsung.android.icon_container.has_icon_container"
+			android:value="@bool/com_samsung_android_icon_container_has_icon_container" />
+
+		<activity-alias
+			android:name="com.example.dexreader.details.ui.DetailsBYLinkActivity"
+			android:exported="true"
+			android:targetActivity="com.example.dexreader.details.ui.DetailsActivity">
+
+			<intent-filter android:autoVerify="false">
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+				<data android:host="mangadex.org" />
+				<data android:host="comick.cc" />
+				<data android:host="blogtruyenmoi.com" />
+			</intent-filter>
+		</activity-alias>
+
+	</application>
 
 </manifest>
