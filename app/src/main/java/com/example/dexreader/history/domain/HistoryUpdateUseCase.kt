@@ -9,8 +9,8 @@ import com.example.dexreader.core.util.ext.printStackTraceDebug
 import com.example.dexreader.core.util.ext.processLifecycleScope
 import com.example.dexreader.history.data.HistoryRepository
 import org.example.dexreader.parsers.model.Manga
-import org.example.dexreader.parsers.util.runCatchingCancellable
 import com.example.dexreader.reader.ui.ReaderState
+import org.example.dexreader.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 class HistoryUpdateUseCase @Inject constructor(

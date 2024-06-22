@@ -5,8 +5,8 @@ import androidx.collection.set
 import com.example.dexreader.core.db.MangaDatabase
 import com.example.dexreader.core.prefs.AppSettings
 import com.example.dexreader.core.util.RetainedLifecycleCoroutineScope
-import com.example.dexreader.reader.ui.ReaderState
 import com.example.dexreader.stats.data.StatsEntity
+import com.example.dexreader.reader.ui.ReaderState
 import dagger.hilt.android.ViewModelLifecycle
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers

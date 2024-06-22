@@ -39,7 +39,6 @@ import com.example.dexreader.history.ui.HistoryListFragment
 import com.example.dexreader.local.ui.LocalStorageCleanupWorker
 import com.example.dexreader.main.ui.owners.AppBarOwner
 import com.example.dexreader.main.ui.owners.BottomNavOwner
-import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import com.example.dexreader.search.ui.MangaListActivity
 import com.example.dexreader.search.ui.multi.MultiSearchActivity
 import com.example.dexreader.search.ui.suggestion.SearchSuggestionFragment
@@ -58,6 +57,7 @@ import kotlinx.coroutines.withContext
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaSource
 import org.example.dexreader.parsers.model.MangaTag
+import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import javax.inject.Inject
 import com.google.android.material.R as materialR
 

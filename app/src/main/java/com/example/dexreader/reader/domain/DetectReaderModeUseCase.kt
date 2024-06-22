@@ -11,13 +11,13 @@ import com.example.dexreader.core.parser.MangaRepository
 import com.example.dexreader.core.prefs.AppSettings
 import com.example.dexreader.core.prefs.ReaderMode
 import com.example.dexreader.core.util.ext.printStackTraceDebug
-import com.example.dexreader.reader.ui.ReaderState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
 import okhttp3.OkHttpClient
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaPage
 import org.example.dexreader.parsers.util.runCatchingCancellable
+import com.example.dexreader.reader.ui.ReaderState
 import java.io.InputStream
 import java.util.zip.ZipFile
 import javax.inject.Inject

@@ -65,9 +65,9 @@ import com.example.dexreader.main.ui.owners.NoModalBottomSheetOwner
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaSource
 import org.example.dexreader.parsers.model.MangaTag
-import com.example.dexreader.reader.ui.ReaderActivity
 import com.example.dexreader.search.ui.MangaListActivity
 import com.example.dexreader.search.ui.SearchActivity
+import com.example.dexreader.reader.ui.ReaderActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint

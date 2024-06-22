@@ -29,13 +29,13 @@ import com.example.dexreader.list.ui.adapter.MangaListListener
 import com.example.dexreader.list.ui.adapter.TypedListSpacingDecoration
 import com.example.dexreader.list.ui.model.ListHeader
 import com.example.dexreader.list.ui.size.DynamicItemSizeResolver
-import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import com.example.dexreader.search.ui.MangaListActivity
 import com.example.dexreader.search.ui.SearchActivity
 import com.example.dexreader.search.ui.multi.adapter.MultiSearchAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaTag
+import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import javax.inject.Inject
 
 @AndroidEntryPoint

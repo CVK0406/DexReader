@@ -12,10 +12,10 @@ import com.example.dexreader.core.ui.list.lifecycle.RecyclerViewLifecycleDispatc
 import com.example.dexreader.core.util.ext.firstVisibleItemPosition
 import com.example.dexreader.databinding.FragmentReaderDoubleBinding
 import com.example.dexreader.reader.domain.PageLoader
-import com.example.dexreader.reader.ui.ReaderState
 import com.example.dexreader.reader.ui.pager.BaseReaderAdapter
 import com.example.dexreader.reader.ui.pager.BaseReaderFragment
 import com.example.dexreader.reader.ui.pager.ReaderPage
+import com.example.dexreader.reader.ui.ReaderState
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.coroutineScope

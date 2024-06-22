@@ -63,8 +63,8 @@ import com.example.dexreader.details.ui.pager.DetailsPagerAdapter
 import com.example.dexreader.download.ui.worker.DownloadStartedObserver
 import com.example.dexreader.main.ui.owners.NoModalBottomSheetOwner
 import org.example.dexreader.parsers.model.Manga
-import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import com.example.dexreader.reader.ui.thumbnails.PagesThumbnailsSheet
+import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 import com.google.android.material.R as materialR

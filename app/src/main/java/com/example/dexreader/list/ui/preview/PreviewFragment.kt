@@ -27,13 +27,13 @@ import com.example.dexreader.databinding.FragmentPreviewBinding
 import com.example.dexreader.details.ui.DetailsActivity
 import com.example.dexreader.filter.ui.FilterOwner
 import com.example.dexreader.image.ui.ImageActivity
-import com.example.dexreader.reader.ui.ReaderActivity
 import com.example.dexreader.search.ui.MangaListActivity
 import com.example.dexreader.search.ui.SearchActivity
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaTag
+import com.example.dexreader.reader.ui.ReaderActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint

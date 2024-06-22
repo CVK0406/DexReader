@@ -49,12 +49,12 @@ import com.example.dexreader.list.ui.model.MangaItemModel
 import com.example.dexreader.list.ui.size.DynamicItemSizeResolver
 import com.example.dexreader.main.ui.MainActivity
 import com.example.dexreader.main.ui.owners.AppBarOwner
-import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import com.example.dexreader.search.ui.MangaListActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.example.dexreader.parsers.model.Manga
 import org.example.dexreader.parsers.model.MangaTag
+import com.example.dexreader.reader.ui.ReaderActivity.IntentBuilder
 import javax.inject.Inject
 
 @AndroidEntryPoint

@@ -6,12 +6,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
 import com.example.dexreader.core.prefs.ReaderAnimation
 import com.example.dexreader.core.ui.BaseFragment
+import com.example.dexreader.reader.ui.ReaderState
+import com.example.dexreader.reader.ui.ReaderViewModel
 import com.example.dexreader.core.ui.widgets.ZoomControl
 import com.example.dexreader.core.util.ext.getParcelableCompat
 import com.example.dexreader.core.util.ext.isAnimationsEnabled
 import com.example.dexreader.core.util.ext.observe
-import com.example.dexreader.reader.ui.ReaderState
-import com.example.dexreader.reader.ui.ReaderViewModel
 
 private const val KEY_STATE = "state"
 

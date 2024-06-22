@@ -112,9 +112,6 @@
 			android:name="com.example.dexreader.bookmarks.ui.BookmarksActivity"
 			android:label="@string/bookmarks" />
 		<activity
-			android:name="com.example.dexreader.suggestions.ui.SuggestionsActivity"
-			android:label="@string/suggestions" />
-		<activity
 			android:name="com.example.dexreader.details.ui.related.RelatedMangaActivity"
 			android:label="@string/related_manga" />
 		<activity
@@ -170,31 +167,11 @@
 			android:name="com.example.dexreader.reader.ui.colorfilter.ColorFilterConfigActivity"
 			android:label="@string/color_correction" />
 		<activity
-			android:name="com.example.dexreader.scrobbling.common.ui.config.ScrobblerConfigActivity"
-			android:exported="true"
-			android:label="@string/settings"
-			android:launchMode="singleTop">
-
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-
-				<data android:scheme="dexreader" />
-			</intent-filter>
-
-		</activity>
-		<activity
 			android:name="com.example.dexreader.settings.sources.catalog.SourcesCatalogActivity"
 			android:label="@string/sources_catalog" />
 		<activity
 			android:name="com.example.dexreader.stats.ui.StatsActivity"
 			android:label="@string/reading_stats" />
-		<activity
-			android:name="com.example.dexreader.alternatives.ui.AlternativesActivity"
-			android:label="@string/alternatives" />
-
 		<service
 			android:name="androidx.work.impl.foreground.SystemForegroundService"
 			android:foregroundServiceType="dataSync"

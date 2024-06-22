@@ -21,11 +21,11 @@ import com.example.dexreader.core.util.ext.showDistinct
 import com.example.dexreader.core.util.ext.viewLifecycleScope
 import com.example.dexreader.core.util.ext.withArgs
 import com.example.dexreader.databinding.SheetReaderConfigBinding
-import com.example.dexreader.reader.ui.ReaderViewModel
 import com.example.dexreader.settings.SettingsActivity
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.dexreader.reader.ui.ReaderViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

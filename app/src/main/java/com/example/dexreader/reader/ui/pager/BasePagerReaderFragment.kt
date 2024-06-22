@@ -22,13 +22,13 @@ import com.example.dexreader.core.util.ext.recyclerView
 import com.example.dexreader.core.util.ext.resetTransformations
 import com.example.dexreader.databinding.FragmentReaderPagerBinding
 import com.example.dexreader.reader.domain.PageLoader
-import com.example.dexreader.reader.ui.ReaderState
 import com.example.dexreader.reader.ui.pager.standard.NoAnimPageTransformer
 import com.example.dexreader.reader.ui.pager.standard.PageAnimTransformer
 import com.example.dexreader.reader.ui.pager.standard.PageHolder
 import com.example.dexreader.reader.ui.pager.standard.PagerEventSupplier
 import com.example.dexreader.reader.ui.pager.standard.PagesAdapter
 import com.google.android.material.snackbar.Snackbar
+import com.example.dexreader.reader.ui.ReaderState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

@@ -2,10 +2,10 @@ package com.example.dexreader.reader.ui.pager.reversed
 
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dexreader.core.prefs.AppSettings
-import com.example.dexreader.reader.ui.ReaderState
 import com.example.dexreader.reader.ui.pager.BasePagerReaderFragment
 import com.example.dexreader.reader.ui.pager.ReaderPage
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.dexreader.reader.ui.ReaderState
 import javax.inject.Inject
 
 @AndroidEntryPoint

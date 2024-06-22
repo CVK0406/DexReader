@@ -1,8 +1,8 @@
 package com.example.dexreader.reader.ui.pager.doublereversed
 
-import com.example.dexreader.reader.ui.ReaderState
 import com.example.dexreader.reader.ui.pager.ReaderPage
 import com.example.dexreader.reader.ui.pager.doublepage.DoubleReaderFragment
+import com.example.dexreader.reader.ui.ReaderState
 
 class ReversedDoubleReaderFragment : DoubleReaderFragment() {
 
